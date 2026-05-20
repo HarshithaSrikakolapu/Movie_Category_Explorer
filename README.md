@@ -1,16 +1,72 @@
-# movie_category_explorer
+# Movie Category Explorer
 
-A new Flutter project.
+A Flutter movie search app built using the OMDb API.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Search movies by category
+- View movie details
+- Pagination
+- Favorites
+- Error handling
+- Pull to refresh
 
-A few resources to get you started if this is your first Flutter project:
+## Concepts Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Provider State Management
+- Dio
+- Retrofit
+- Repository Pattern
+- Dependency Injection
+- Isolates using `compute()`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Dependency Injection
+
+Used constructor injection for loose coupling.
+
+```dart
+MovieRepository(this.service);
+```
+
+## Isolate Usage
+
+Used `compute()` to parse JSON in background isolate.
+
+```dart
+final response = await compute(
+  parseMovies,
+  jsonEncode(rawJson),
+);
+```
+
+## API Used
+
+https://www.omdbapi.com/
+
+## Run Project
+
+```bash
+flutter pub get
+```
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
+```bash
+flutter run
+```
+
+## Architecture
+
+```text
+UI
+↓
+ViewModel
+↓
+Repository
+↓
+Service
+↓
+OMDb API
+```
