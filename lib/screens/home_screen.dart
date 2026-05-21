@@ -51,21 +51,22 @@ class _HomeScreenState
             const EdgeInsets.all(12),
 
             child: TextField(
-
+              style: const TextStyle(
+  color: Colors.white,
+),
               onChanged: (value) {
 
                 vm.onSearchChanged(value);
               },
 
               decoration: InputDecoration(
-
+                hintStyle: const TextStyle(
+                  color: Colors.white70,
+                ),
                 hintText:
                 'Search horror, marvel, comedy...',
 
-                hintStyle:
-                const TextStyle(
-                  color: Colors.grey,
-                ),
+                
 
                 prefixIcon:
                 const Icon(
@@ -132,7 +133,7 @@ class _HomeScreenState
                           'Try horror, marvel, comedy...',
 
                           style: TextStyle(
-                            color: Colors.grey,
+                            color: Color.fromARGB(255, 245, 242, 242),
                           ),
                         ),
                       ],
@@ -289,22 +290,17 @@ class _HomeScreenState
 
                                       Text(
 
-                                        movie.title,
+  movie.title,
 
-                                        maxLines: 2,
+  style: const TextStyle(
 
-                                        overflow:
-                                        TextOverflow.ellipsis,
+    color: Colors.white,
 
-                                        style:
-                                        const TextStyle(
+    fontSize: 20,
 
-                                          fontSize: 18,
-
-                                          fontWeight:
-                                          FontWeight.bold,
-                                        ),
-                                      ),
+    fontWeight: FontWeight.bold,
+  ),
+),
 
                                       const SizedBox(height: 10),
 

@@ -66,7 +66,6 @@ class _MovieService implements MovieService {
     final _value = _result.data;
     return _value;
   }
-
   @override
   Future<MovieDetailsModel> getMovieDetails(String imdbId) async {
     final _extra = <String, dynamic>{};
