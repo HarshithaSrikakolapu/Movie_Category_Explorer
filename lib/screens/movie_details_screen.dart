@@ -1,59 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../models/movie_details_model.dart';
-
 import '../viewmodels/movie_viewmodel.dart';
-
 class MovieDetailsScreen
     extends StatefulWidget {
-
   final String imdbId;
-
   const MovieDetailsScreen({
     super.key,
     required this.imdbId,
   });
-
   @override
   State<MovieDetailsScreen> createState() =>
       _MovieDetailsScreenState();
 }
-
 class _MovieDetailsScreenState
     extends State<MovieDetailsScreen> {
-
   MovieDetailsModel? movie;
-
   bool isLoading = true;
-
   String? error;
-
   @override
   void initState() {
-
     super.initState();
-
     fetchMovieDetails();
   }
-
   Future<void> fetchMovieDetails() async {
-
     try {
-
       final repository =
           context.read<MovieViewModel>()
               .repository;
-
       movie =
       await repository.getMovieDetails(
         widget.imdbId,
       );
-
     } catch (e) {
-
       error = e.toString();
-
     } finally {
 
       setState(() {
@@ -65,7 +45,13 @@ class _MovieDetailsScreenState
 
   @override
   Widget build(BuildContext context) {
+    final width =
+    MediaQuery.of(context)
+        .size
+        .width;
 
+final isTablet =
+    width > 600;
     // LOADING
     if (isLoading) {
 
@@ -115,7 +101,13 @@ class _MovieDetailsScreenState
 
               width: double.infinity,
 
-              height: 450,
+              height:
+
+isTablet
+
+? 600
+
+: width * 0.8,
 
               fit: BoxFit.cover,
 
@@ -141,8 +133,11 @@ class _MovieDetailsScreenState
 
             Padding(
 
-              padding:
-              const EdgeInsets.all(16),
+              padding: EdgeInsets.all(
+  isTablet
+      ? 30
+      : width * 0.04,
+),
 
               child: Column(
 
@@ -155,78 +150,100 @@ class _MovieDetailsScreenState
 
                     m.title,
 
-                    style:
-                    const TextStyle(
-
-                      fontSize: 30,
-
-                      fontWeight:
-                      FontWeight.bold,
-                    ),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 36
+          : width * 0.06,
+  fontWeight: FontWeight.bold,
+),
                   ),
 
                   const SizedBox(height: 20),
 
                   Text(
                     'Year: ${m.year}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 10),
 
                   Text(
                     'Genre: ${m.genre}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 10),
 
                   Text(
                     'Director: ${m.director}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 10),
 
                   Text(
                     'Actors: ${m.actors}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 10),
 
                   Text(
                     'IMDb Rating: ${m.imdbRating}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 10),
 
                   Text(
                     'Runtime: ${m.runtime}',
-                    style:
-                    const TextStyle(fontSize: 18),
+                    
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                   ),
 
                   const SizedBox(height: 20),
 
-                  const Text(
-
-                    'Plot',
-
-                    style: TextStyle(
-
-                      fontSize: 24,
-
-                      fontWeight:
-                      FontWeight.bold,
-                    ),
-                  ),
+                  Text(
+  'Plot',
+  style: TextStyle(
+    fontSize:
+        isTablet
+            ? 30
+            : width * 0.05,
+    fontWeight: FontWeight.bold,
+  ),
+),
 
                   const SizedBox(height: 10),
 
@@ -234,11 +251,14 @@ class _MovieDetailsScreenState
 
                     m.plot,
 
-                    style:
-                    const TextStyle(
-                      fontSize: 18,
+                    style: TextStyle(
+  fontSize:
+      isTablet
+          ? 22
+          : width * 0.035,
+),
                     ),
-                  ),
+                  
                 ],
               ),
             ),

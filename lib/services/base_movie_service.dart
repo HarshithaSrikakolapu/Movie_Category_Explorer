@@ -10,11 +10,12 @@ abstract class BaseMovieService {
   );
 
   // RAW JSON SEARCH
-  Future<dynamic>
-searchMoviesRaw(
+  Future<Map<String, dynamic>>
+  searchMoviesRaw(
     String category,
     int page,
   );
+
 
   // MOVIE DETAILS
   Future<MovieDetailsModel>
