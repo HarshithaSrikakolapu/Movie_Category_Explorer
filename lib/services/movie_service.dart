@@ -16,6 +16,7 @@ implements BaseMovieService {
   }) = _MovieService;
 
   // SEARCH MOVIES
+  @override
   @GET('/')
   Future<MovieResponse> searchMovies(
 
@@ -23,6 +24,7 @@ implements BaseMovieService {
 
     @Query('page') int page,
   );
+  @override
   @GET('/')
 @GET('/')
 Future<dynamic>
@@ -33,6 +35,7 @@ searchMoviesRaw(
   @Query('page') int page,
 );
   // GET FULL MOVIE DETAILS
+  @override
   @GET('/')
   Future<MovieDetailsModel> getMovieDetails(
 
