@@ -3,16 +3,20 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-
 import '../core/utils/movie_parser.dart';
 import '../models/movie_model.dart';
 import '../repositories/movie_repository.dart';
-
+import '../services/local_storage_service.dart';
 class MovieViewModel extends ChangeNotifier {
 
   final MovieRepository repository;
-
+  final LocalStorageService localStorageService =
+    LocalStorageService();
   MovieViewModel(this.repository){
+    
+
+  favoriteMovieIds =
+      localStorageService.getFavorites();
 
     scrollController.addListener(() {
 
@@ -200,20 +204,23 @@ class MovieViewModel extends ChangeNotifier {
   }
 
   // FAVORITE TOGGLE
-  void toggleFavorite(String imdbId){
+  void toggleFavorite(String imdbId) {
 
-    if(favoriteMovieIds.contains(imdbId)){
+  if (favoriteMovieIds.contains(imdbId)) {
 
-      favoriteMovieIds.remove(imdbId);
+    favoriteMovieIds.remove(imdbId);
 
-    } else {
+  } else {
 
-      favoriteMovieIds.add(imdbId);
-    }
-
-    notifyListeners();
+    favoriteMovieIds.add(imdbId);
   }
 
+  localStorageService.saveFavorites(
+    favoriteMovieIds,
+  );
+
+  notifyListeners();
+}
   // CHECK FAVORITE
   bool isFavorite(String imdbId){
 

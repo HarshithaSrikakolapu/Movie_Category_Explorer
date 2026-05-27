@@ -1,0 +1,17 @@
+name: temp_test
+environment:
+  sdk: ^3.10.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json_annotation: ^4.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: 0.11.0
+  json_serializable: ^6.14.0
+  build_runner: ^2.12.1
+flutter:
+  uses-material-design: true
