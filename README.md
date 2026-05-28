@@ -1,16 +1,62 @@
-# movie_category_explorer
+# Movie Category Explorer
 
-A new Flutter project.
+A Flutter application that allows users to search movies by category using the OMDb API.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Search movies by category
+- Movie details screen
+- Pagination (load more movies)
+- Favorites support
+- Local database using Hive
+- Responsive UI using MediaQuery
+- Riverpod state management
+- MVVM architecture
+- Dependency Injection
+- Dio + Retrofit API integration
+- Flavors support
+- Loading and error handling
+- Dark theme UI
 
-A few resources to get you started if this is your first Flutter project:
+## Architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This project follows:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- MVVM Architecture
+- Repository Pattern
+- Riverpod State Management
+- Dependency Injection
+
+## Technologies Used
+
+- Flutter
+- Riverpod
+- Dio
+- Retrofit
+- Hive
+- MediaQuery
+- OMDb API
+
+## Folder Structure
+
+```text
+lib/
+
+models/
+providers/
+repositories/
+screens/
+services/
+viewmodels/
+```
+
+## API Used
+
+OMDb API
+
+https://www.omdbapi.com/
+
+## Run Project
+```text
+flutter pub get
+flutter run -t lib/main_dev.dart
