@@ -1,72 +1,62 @@
 # Movie Category Explorer
 
-A Flutter movie search app built using the OMDb API.
+A Flutter application that allows users to search movies by category using the OMDb API.
 
 ## Features
 
 - Search movies by category
-- View movie details
-- Pagination
-- Favorites
-- Error handling
-- Pull to refresh
+- Movie details screen
+- Pagination (load more movies)
+- Favorites support
+- Local database using Hive
+- Responsive UI using MediaQuery
+- Riverpod state management
+- MVVM architecture
+- Dependency Injection
+- Dio + Retrofit API integration
+- Flavors support
+- Loading and error handling
+- Dark theme UI
 
-## Concepts Used
+## Architecture
 
-- Provider State Management
+This project follows:
+
+- MVVM Architecture
+- Repository Pattern
+- Riverpod State Management
+- Dependency Injection
+
+## Technologies Used
+
+- Flutter
+- Riverpod
 - Dio
 - Retrofit
-- Repository Pattern
-- Dependency Injection
-- Isolates using `compute()`
+- Hive
+- MediaQuery
+- OMDb API
 
-## Dependency Injection
+## Folder Structure
 
-Used constructor injection for loose coupling.
+```text
+lib/
 
-```dart
-MovieRepository(this.service);
-```
-
-## Isolate Usage
-
-Used `compute()` to parse JSON in background isolate.
-
-```dart
-final response = await compute(
-  parseMovies,
-  jsonEncode(rawJson),
-);
+models/
+providers/
+repositories/
+screens/
+services/
+viewmodels/
 ```
 
 ## API Used
 
+OMDb API
+
 https://www.omdbapi.com/
 
 ## Run Project
-
-```bash
-flutter pub get
-```
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
-```bash
-flutter run
-```
-
-## Architecture
-
 ```text
-UI
-↓
-ViewModel
-↓
-Repository
-↓
-Service
-↓
-OMDb API
-```
+flutter pub get
+flutter run -t lib/main_dev.dart
