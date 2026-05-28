@@ -30,10 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_riverpod: ^2.6.1
   dio: ^5.9.2
   retrofit: ^4.0.3
-  provider: ^6.1.5+1
   json_annotation: ^4.9.0
   cached_network_image: ^3.4.1
   hive: ^2.2.3

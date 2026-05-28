@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import '../providers/movie_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/movie_details_model.dart';
-import '../viewmodels/movie_viewmodel.dart';
 class MovieDetailsScreen
-    extends StatefulWidget {
+extends ConsumerStatefulWidget  {
   final String imdbId;
   const MovieDetailsScreen({
     super.key,
     required this.imdbId,
   });
   @override
-  State<MovieDetailsScreen> createState() =>
-      _MovieDetailsScreenState();
+ConsumerState<MovieDetailsScreen> createState() =>
+    _MovieDetailsScreenState();
 }
 class _MovieDetailsScreenState
-    extends State<MovieDetailsScreen> {
+    extends ConsumerState<MovieDetailsScreen> {
   MovieDetailsModel? movie;
   bool isLoading = true;
   String? error;
@@ -26,8 +26,7 @@ class _MovieDetailsScreenState
   Future<void> fetchMovieDetails() async {
     try {
       final repository =
-          context.read<MovieViewModel>()
-              .repository;
+          ref.read(movieViewModelProvider).repository;
       movie =
       await repository.getMovieDetails(
         widget.imdbId,

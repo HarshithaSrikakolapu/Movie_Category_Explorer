@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'core/network/dio_client.dart';
-import 'repositories/movie_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home_screen.dart';
-import 'services/movie_service.dart';
-import 'viewmodels/movie_viewmodel.dart';
 void main() {
-  final dio = DioClient().dio;
-  final service =
-  MovieService(dio);
+
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => MovieViewModel(
-            MovieRepository(service),
-          ),
-        ),
-      ],
-      child: const MyApp(),
+
+    const ProviderScope(
+
+      child: MyApp(),
     ),
   );
 }

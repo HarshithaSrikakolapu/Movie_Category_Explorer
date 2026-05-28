@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:provider/provider.dart';
-
-import 'core/network/dio_client.dart';
-import 'repositories/movie_repository.dart';
 import 'screens/home_screen.dart';
-import 'services/movie_service.dart';
-import 'viewmodels/movie_viewmodel.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,28 +12,13 @@ void main() async {
   // OPEN BOX
   await Hive.openBox('favorites');
 
-  final dioClient = DioClient();
-
-  final service =
-      MovieService(dioClient.dio);
-
   runApp(
 
-    MultiProvider(
+  const ProviderScope(
 
-      providers: [
-
-        ChangeNotifierProvider(
-
-          create: (_) => MovieViewModel(
-            MovieRepository(service),
-          ),
-        ),
-      ],
-
-      child: const MyApp(),
-    ),
-  );
+    child: MyApp(),
+  ),
+);
 }
 
 class MyApp extends StatelessWidget {

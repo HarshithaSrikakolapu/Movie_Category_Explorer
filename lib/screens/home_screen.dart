@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../viewmodels/movie_viewmodel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../providers/movie_provider.dart';
 import 'movie_details_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen
+extends ConsumerStatefulWidget  {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState
+extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isTablet = screenWidth > 600;
-    final vm = context.watch<MovieViewModel>();
+    final vm =ref.watch(movieViewModelProvider);
 
     return Scaffold(
       appBar: AppBar(
